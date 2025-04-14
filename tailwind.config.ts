@@ -13,13 +13,28 @@ const config: Config = {
     },
     extend: {
       colors: {
-        ivory: '#F8F5F0',
-        ink: '#2C2C2C',
+        'ivory': '#FFFFF0',
+        'ink': '#1A1A1A',
         'light-ink': '#4A4A4A',
       },
       fontFamily: {
-        serif: ['var(--font-noto-serif)'],
-        handwriting: ['var(--font-handwriting)'],
+        'serif': ['var(--font-serif)'],
+        'handwriting': ['var(--font-handwriting)'],
+      },
+      spacing: {
+        '0': '0',
+        '1': '0.25rem',
+        '2': '0.5rem',
+        '3': '0.75rem',
+        '4': '1rem',
+        '5': '1.25rem',
+        '6': '1.5rem',
+        '8': '2rem',
+        '10': '2.5rem',
+        '12': '3rem',
+        '16': '4rem',
+        '20': '5rem',
+        '24': '6rem',
       },
       screens: {
         'sm': '640px',
@@ -27,7 +42,7 @@ const config: Config = {
         'lg': '1024px',
         'xl': '1280px',
         '2xl': '1536px',
-      }
+      },
     },
   },
   plugins: [
