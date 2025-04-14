@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="ko" className={`${notoSerifKr.variable} ${nanumPen.variable}`}>
       <body className="bg-ivory text-ink min-h-screen">
         <Navigation />
-        <main>{children}</main>
+        <main className="container mx-auto px-4 py-8 max-w-6xl">{children}</main>
       </body>
     </html>
   );
