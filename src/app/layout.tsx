@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Serif_KR } from "next/font/google";
+import { Noto_Serif_KR, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
@@ -7,11 +7,19 @@ const notoSerifKr = Noto_Serif_KR({
   weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-noto-serif",
+});
+
+const nanumPen = Nanum_Pen_Script({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-handwriting",
 });
 
 export const metadata: Metadata = {
-  title: "Damda",
-  description: "Damda - Your Daily Inspiration",
+  title: "담다 - 마음을 글씨에 담습니다",
+  description: "서예 작가 담다의 브랜드 웹사이트",
 };
 
 export default function RootLayout({
@@ -20,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={notoSerifKr.className}>
-      <body>
+    <html lang="ko" className={`${notoSerifKr.variable} ${nanumPen.variable}`}>
+      <body className="bg-ivory text-ink min-h-screen">
         <Navigation />
         <main>{children}</main>
       </body>

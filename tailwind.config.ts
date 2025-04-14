@@ -18,8 +18,8 @@ const config: Config = {
         'light-ink': '#4A4A4A',
       },
       fontFamily: {
-        'serif': ['var(--font-serif)'],
-        'handwriting': ['var(--font-handwriting)'],
+        serif: ['var(--font-noto-serif)'],
+        handwriting: ['var(--font-handwriting)'],
       },
       spacing: {
         '0': '0',
