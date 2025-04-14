@@ -1,0 +1,63 @@
+import Image from 'next/image'
+
+const products = [
+  {
+    id: 1,
+    title: '엽서 세트',
+    description: '작가의 손글씨가 담긴 엽서 5장 세트',
+    price: '15,000원',
+  },
+  {
+    id: 2,
+    title: '포스터',
+    description: 'A3 사이즈 프리미엄 포스터',
+    price: '25,000원',
+  },
+  {
+    id: 3,
+    title: '캘린더',
+    description: '2024년 한정판 캘린더',
+    price: '30,000원',
+  },
+]
+
+export default function Shop() {
+  return (
+    <main>
+      {/* Hero Section */}
+      <section className="relative h-[40vh] flex items-center justify-center">
+        <div className="absolute inset-0 z-0 bg-ink/10" />
+        <div className="relative z-10 text-center text-ink">
+          <h1 className="handwriting text-4xl sm:text-6xl mb-8">
+            담다 샵
+          </h1>
+          <p className="text-lg">작가의 글씨가 담긴 특별한 상품들</p>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <div key={product.id} className="group">
+                <div className="relative aspect-square mb-4 bg-ink/5 rounded-lg overflow-hidden" />
+                <h3 className="text-xl font-serif mb-2">{product.title}</h3>
+                <p className="text-ink/60 mb-2">{product.description}</p>
+                <p className="font-serif">{product.price}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Coming Soon */}
+          <div className="mt-16 text-center">
+            <h2 className="text-3xl font-serif mb-4">Coming Soon</h2>
+            <p className="text-ink/60">
+              더 많은 상품들이 준비 중입니다. 조금만 기다려주세요.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+} 
