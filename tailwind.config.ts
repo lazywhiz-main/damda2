@@ -43,6 +43,28 @@ const config: Config = {
         'xl': '1280px',
         '2xl': '1536px',
       },
+      typography: {
+        ink: {
+          css: {
+            '--tw-prose-body': '#1a1a1a',
+            '--tw-prose-headings': '#1a1a1a',
+            '--tw-prose-lead': '#1a1a1a',
+            '--tw-prose-links': '#1a1a1a',
+            '--tw-prose-bold': '#1a1a1a',
+            '--tw-prose-counters': '#1a1a1a',
+            '--tw-prose-bullets': '#1a1a1a',
+            '--tw-prose-hr': '#e5e5e5',
+            '--tw-prose-quotes': '#1a1a1a',
+            '--tw-prose-quote-borders': '#e5e5e5',
+            '--tw-prose-captions': '#6b7280',
+            '--tw-prose-code': '#1a1a1a',
+            '--tw-prose-pre-code': '#e5e5e5',
+            '--tw-prose-pre-bg': '#1a1a1a',
+            '--tw-prose-th-borders': '#e5e5e5',
+            '--tw-prose-td-borders': '#e5e5e5',
+          },
+        },
+      },
     },
   },
   plugins: [

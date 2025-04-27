@@ -11,10 +11,12 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 const nanumPen = Nanum_Pen_Script({
-  weight: "400",
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
-  variable: "--font-handwriting",
+  variable: "--font-nanum-pen",
+  preload: true,
+  fallback: ['cursive'],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
     <html lang="ko" className={`${notoSerifKr.variable} ${nanumPen.variable}`}>
       <body className="bg-ivory text-ink min-h-screen">
         <Navigation />
-        <main className="container mx-auto px-4 py-8 max-w-6xl">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -3,30 +3,127 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 44, 44, 44;
-  --background-rgb: 248, 245, 240;
+  /* 메인 컬러 */
+  --color-primary: 44, 44, 44;  /* 현재 ink 색상 */
+  --color-secondary: 248, 245, 240; /* 현재 ivory 색상 */
+  
+  /* 액센트 컬러 */
+  --color-accent-1: 232, 213, 196;  /* 연한 베이지 */
+  --color-accent-2: 125, 110, 131;  /* 연한 보라 */
+  
+  /* 히어로 섹션 배경 컬러 */
+  --hero-home: 245, 235, 224;      /* 따뜻한 베이지 */
+  --hero-about: 227, 232, 229;     /* 세이지 그린 */
+  --hero-gallery: 232, 230, 240;   /* 연한 라벤더 */
+  --hero-today: 245, 235, 224;     /* 홈페이지와 동일한 베이지 */
+  --hero-contact: 220, 227, 232;   /* 진한 블루 그레이 */
+  --hero-store: 250, 232, 224;     /* 밝은 피치 */
+  
+  /* 투명도 변수 추가 */
+  --opacity-5: 0.05;
+  --opacity-10: 0.1;
+  --opacity-80: 0.8;
+  
+  /* 상태 색상 */
+  --color-success: 76, 175, 80;
+  --color-warning: 255, 193, 7;
+  --color-error: 244, 67, 54;
+  
+  /* 텍스트 색상 */
+  --text-primary: var(--color-primary);
+  --text-secondary: 102, 102, 102;
+  --text-light: 255, 255, 255;
+
+  /* 폰트 패밀리 */
+  --font-serif: var(--font-noto-serif);
+  --font-handwriting: var(--font-nanum-pen);
+  
+  /* 폰트 크기 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  
+  /* 폰트 두께 */
+  --font-normal: 400;
+  --font-bold: 700;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color: var(--text-primary);
+  background: var(--color-secondary);
 }
 
 @layer components {
   .handwriting {
-    font-family: var(--font-handwriting);
+    font-family: var(--font-handwriting), cursive;
   }
   
-  .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  .section {
+    @apply py-16 sm:py-20 md:py-24;
   }
   
-  @media (min-width: 640px) {
-    .section-padding {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl;
+  }
+
+  /* 터치 인터랙션을 위한 버튼 스타일 */
+  .touch-button {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+    @apply active:opacity-80 transition-opacity;
+  }
+
+  /* 히어로 섹션 스타일 */
+  .hero-home {
+    background-color: rgba(var(--hero-home), 0.95);
+  }
+  
+  .hero-about {
+    background-color: rgba(var(--hero-about), 0.95);
+  }
+  
+  .hero-gallery {
+    background-color: rgba(var(--hero-gallery), 0.95);
+  }
+  
+  .hero-today {
+    background-image: 
+      linear-gradient(
+        to bottom right,
+        rgba(var(--color-primary), var(--opacity-5)),
+        rgba(var(--color-primary), var(--opacity-10))
+      ),
+      url('/images/hero-today.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero-contact {
+    background-color: rgba(var(--hero-contact), 0.95);
+  }
+  
+  .hero-store {
+    background-color: rgba(var(--hero-store), 0.95);
+  }
+
+  .timeline-quote {
+    @apply bg-white rounded-lg shadow-sm p-6 transition-all duration-300;
+  }
+
+  .timeline-quote:hover {
+    @apply shadow-md transform -translate-y-1;
+  }
+
+  .timeline-period {
+    font-size: var(--text-xl);
+    font-family: var(--font-serif);
+    color: rgba(var(--color-primary), var(--opacity-80));
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(var(--color-primary), var(--opacity-10));
+    padding-bottom: 1rem;
   }
 }
 

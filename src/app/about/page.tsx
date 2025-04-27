@@ -6,11 +6,14 @@ export default function About() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0 bg-ink/5" />
+        <div className="absolute inset-0 z-0">
+          <div className="w-full h-full hero-about" />
+        </div>
         <div className="relative z-10 text-center text-ink">
-          <h1 className="font-handwriting text-4xl sm:text-6xl mb-8">
-            브랜드 스토리
+          <h1 className="handwriting text-4xl sm:text-6xl mb-4">
+            작가의 말
           </h1>
+          <div className="h-4" />
         </div>
       </section>
 

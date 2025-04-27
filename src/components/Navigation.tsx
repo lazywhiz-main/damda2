@@ -1,12 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { href: '/', label: '홈' },
@@ -14,14 +24,19 @@ export default function Navigation() {
     { href: '/gallery', label: '작품 갤러리' },
     { href: '/today', label: '하루 한 문장' },
     { href: '/contact', label: '문의하기' },
-    { href: '/shop', label: '샵' },
+    { href: '/shop', label: '스토어' },
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-ivory/99 shadow-sm' : 'bg-ivory/98'
+    } backdrop-blur-md`}>
+      <div className="container mx-auto">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-serif">
+          <Link 
+            href="/" 
+            className="text-xl font-serif hover:opacity-80 transition-opacity touch-button text-primary"
+          >
             담다
           </Link>
           
@@ -31,8 +46,10 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm hover:text-ink/70 transition-colors ${
-                  pathname === item.href ? 'text-ink font-medium' : 'text-ink/60'
+                className={`text-sm touch-button px-3 py-2 rounded-lg transition-all duration-200 ${
+                  pathname === item.href 
+                    ? 'text-primary font-bold bg-accent-1/30 shadow-sm border border-accent-1' 
+                    : 'text-primary/70 hover:text-primary hover:bg-accent-1/10'
                 }`}
               >
                 {item.label}
@@ -43,7 +60,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-ink/60 hover:text-ink"
+            className="md:hidden touch-button text-primary/80 hover:text-primary"
             aria-label="Toggle menu"
           >
             <svg
@@ -67,16 +84,16 @@ export default function Navigation() {
         {/* Mobile Menu Panel */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-ivory/95 rounded-lg shadow-lg mt-2">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-ivory rounded-lg shadow-lg mt-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block px-3 py-2 rounded-md text-base ${
+                  className={`block px-3 py-2 rounded-md text-base touch-button ${
                     pathname === item.href
-                      ? 'text-ink font-medium bg-ink/5'
-                      : 'text-ink/60 hover:text-ink hover:bg-ink/5'
-                  }`}
+                      ? 'text-primary font-bold bg-accent-1/10 border-l-4 border-accent-1'
+                      : 'text-primary/70 hover:text-primary hover:bg-accent-1/5'
+                  } transition-all duration-200`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
