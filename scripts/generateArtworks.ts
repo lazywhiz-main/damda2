@@ -12,18 +12,18 @@ function today() {
 }
 
 // 메타데이터 로드
-let meta = {};
+let meta: { [key: string]: any } = {};
 if (fs.existsSync(META_PATH)) {
   meta = JSON.parse(fs.readFileSync(META_PATH, 'utf-8'));
 }
 
 // 이미지 파일 목록
 const files = fs.readdirSync(ARTWORKS_DIR)
-  .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+  .filter((f: string) => /\.(jpg|jpeg|png|webp)$/i.test(f))
   .sort();
 
 // artworks 배열 생성
-const artworks = files.map((file, idx) => {
+const artworks = files.map((file: string, idx: number) => {
   const m = meta[file] || {};
   return {
     id: idx + 1,
