@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
@@ -35,9 +36,16 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link 
             href="/" 
-            className="text-xl font-serif hover:opacity-80 transition-opacity touch-button text-primary"
+            className="flex items-center hover:opacity-80 transition-opacity touch-button"
           >
-            담다
+            <Image
+              src="/images/logo.png"
+              alt="담다 로고"
+              width={150}
+              height={50}
+              className="h-12 w-auto"
+              priority
+            />
           </Link>
           
           {/* Desktop Menu */}
