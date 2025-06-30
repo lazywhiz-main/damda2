@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Serif_KR, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 const notoSerifKr = Noto_Serif_KR({
   weight: ["400", "700"],
@@ -32,8 +34,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${notoSerifKr.variable} ${nanumPen.variable}`}>
       <body className="bg-ivory text-ink min-h-screen">
+        <GoogleAnalytics />
         <Navigation />
         <main>{children}</main>
+        <CookieConsentBanner />
       </body>
     </html>
   );

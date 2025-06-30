@@ -23,7 +23,7 @@ export default function Navigation() {
     { href: '/', label: '홈' },
     { href: '/about', label: '작가 소개' },
     { href: '/gallery', label: '작품 갤러리' },
-    { href: '/today', label: '하루 한 문장' },
+    // { href: '/today', label: '하루 한 문장' }, // 임시 비활성화 - 나중에 활성화하려면 주석 해제
     { href: '/contact', label: '문의하기' },
     { href: '/shop', label: '스토어' },
   ]
